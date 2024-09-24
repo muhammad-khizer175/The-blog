@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("./partials/head") %>
+    <title>home</title>
+  </head>
+  <body>
+    <%- include("./partials/navbar") %>
+
+    <section
+      class="container d-flex align-items-center justify-content-center"
+      style="height: 90vh"
+    >
+      <img src="<%= locals.logo %>" alt="logo" width="500px" />
+    </section>
+    <% if (blogs) { %>
+
+      <hr />
+    <section>
+      <div
+        class="container d-flex align-items-center justify-content-center"
+        style="height: 10vh"
+      >
+        <h1>Blogs</h1>
+      </div>
+      <div class="container mt-4" style="height: 90vh">
+        <div class="row">
+          <% blogs.forEach(blog => { %>
+          <div class="col-md-3">
+            <div class="card m-2" style="width: 16rem">
+              <img src="<%= blog.bannerImage %>" style="height: 8rem" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title"><%= blog.blogTitle %></h5>
+                <a href="/blog/<%= blog._id %>" class="btn btn-primary">View</a>
+              </div>
+            </div>
+          </div>
+          <% }) %>
+        </div>
+      </div>
+    </section>
+     
+    <% } %>
+    
+
+    <%- include("./partials/script") %>
+  </body>
+</html>
